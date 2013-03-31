@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>12.ListCreateHTML</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Replace all placeholders marked with –{…}–</h1>
+    <div data-type="template" id="list-item">
+        <strong>-{name}-</strong> <span>-{age}-</span>
+    </div>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a function that creates a HTML UL using a template for every HTML LI. 
+	    //The source of the list should be an array of elements.
+	    //Replace all placeholders marked with –{…}–   
+	    //with the value of the corresponding property of the object. 
+
+        //create a new list populating it with the new values and saving the original tags
+	    function generateList(people, template) {
+	        var list = "<ul>";
+
+	        for (var i = 0; i < people.length; i++) {
+	            list += "<li>";
+	            list += template.replace("-{name}-", people[i].name);
+	            list = list.replace("-{age}-", people[i].age);
+	            list += "</li>";
+	        }
+	        list += "</ul>";
+	        return list;
+	    }
+
+	    var people = [{ name: "Peter", age: 14 },
+            { name: "John", age: 87 },
+            { name: "Helen", age: 60 },];
+	    var template = document.getElementById("list-item").innerHTML;
+
+	    console.log(generateList(people, template));
+	    jsConsole.writeLine(generateList(people, template));
+	    document.getElementById("list-item").innerHTML = generateList(people, template);
+	</script>
+</body>
+</html>

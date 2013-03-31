@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>1.ReverseString</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Reverse a string</h1>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a JavaScript function reverses string and returns it
+	    //Example: "sample" --> "elpmas".
+
+        //split() on a string returns an array, then reverses it and joins it
+	    function reverse(str) {
+	        return str.split("").reverse().join("");
+	    }
+
+	    var myStr = "sample test string";
+
+	    var reversed = reverse(myStr);
+
+	    jsConsole.writeLine(reversed);
+	</script>
+</body>
+</html>

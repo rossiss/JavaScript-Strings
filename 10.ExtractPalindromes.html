@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>10.ExtractPalindromes</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Extracting all palindromes, e.g. "ABBA", "lamal", "exe"</h1>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".
+
+	    function findPalindromes(text) {
+	        var wordsArray = text.split(/([?!.\s\\|{}\[\]])/g);   //split text with regex
+	        var palindromes = false;
+	        var result = [];
+
+	        for (var i = 0; i < wordsArray.length; i++) {   
+	            var word = wordsArray[i];    //gets every word from the text
+
+	            if (word.length > 2) {
+	                //checks every character of the word from start and end in the same time
+	                for (var j = 0, k = word.length-1; j < k; j++, k--) {  
+	                    if (word.charAt(j) == word.charAt(k)) {
+	                        palindromes = true;
+	                        continue;
+	                    }
+	                    else {
+	                        palindromes = false;
+	                        break;
+	                    }
+	                }
+	                if (palindromes) {
+	                    result.push(word);
+	                }
+	            }
+	        }
+	        return result;
+	    }
+   
+	    var str = "Hello Peter! Do you like the exe files? Does your mum likes ABBA?";
+
+	    jsConsole.writeLine(str);
+	    jsConsole.writeLine("Palindromes in the text: " + findPalindromes(str).join(', '));
+	    console.log(findPalindromes(str).join(', '));
+	</script>
+</body>
+</html>

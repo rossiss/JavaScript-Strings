@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>7.ParseURL</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Parsing an url</h1>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a script that parses an URL address given in the format:
+	    //[protocol]://[server]/[resource]
+	    //and extracts from it the [protocol], [server] and [resource] elements. 
+	    //Return the elements in a JSON object.
+
+        //takes the string up to the ':'
+	    function getProtocol(text) {
+	        var protocol = text.substring(0, text.indexOf(':'));
+	        return protocol;
+	    }
+
+	    //takes the string from the index after the second '/' to the next '/'
+	    function getServer(text) {
+	        var start = text.indexOf('/') + 2;
+	        var server = text.substring(start, text.indexOf('/', start));
+	        return server;
+	    }
+
+        //takes the string from the index after the third '/'
+	    function getResource(text) {
+	        var start = text.indexOf('/') + 2;
+	        var secondStart = text.indexOf('/', start);
+	        var resource = text.substring(secondStart);
+	        return resource;
+	    }
+
+	    var url = "http://telerikacademy.com/Courses/Courses/Details/30";
+	    jsConsole.writeLine(url);
+
+	    var info = {
+	        protocol: getProtocol(url),
+	        server: getServer(url),
+	        resource: getResource(url)
+	    };
+
+	    for (var i in info) {
+	        jsConsole.writeLine(i + ': ' + '"' + info[i] + '"');
+	    }
+	</script>
+</body>
+</html>

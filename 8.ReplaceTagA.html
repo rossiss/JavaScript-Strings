@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>8.ReplaceTagA</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Replace all the tags 'a' with corresponding tags [URL=…]…/URL]</h1>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a JavaScript function that replaces in a HTML document given as string 
+	    //all the tags <a href="…">…</a> with corresponding tags [URL=…]…/URL]. 
+
+        //takes the first index and then starts to search from that position +1
+        function replaceAtag(text) {
+	        var aStart = text.indexOf('<a href="');
+
+	        while (aStart > -1) {
+	            text = text.replace('<a href="', "[URL=");
+	            text = text.replace('">', "]");
+	            text = text.replace('</a>', "[/URL]");
+
+	            aStart = text.indexOf('<a href="', aStart + 1);
+	        }
+	        return text;
+	    }
+   
+	    var htmlText = '<p>Please visit <a href="http://academy.telerik. com">our site</a> to choose a training course. Also visit <a href="www.devbg.org">our forum</a> to discuss the courses.</p>';
+	    jsConsole.writeLine(htmlText);
+
+	    console.log(replaceAtag(htmlText));
+	</script>
+</body>
+</html>

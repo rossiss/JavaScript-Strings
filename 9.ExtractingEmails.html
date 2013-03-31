@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>9.ExtractingEmails</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Extracting all email addresses from given text</h1>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a function for extracting all email addresses from given text. 
+	    //All substrings that match the format <identifier>@<host>…<domain> should be recognized as emails. 
+	    //Return the emails as array of strings.
+
+        //uses regular expression to match the emails in the text
+	    function findEmailAddresses(text) {
+	        var separateEmailsBy = ", ";
+	        var email = "<none>";    // if no match, use this
+	        var emailsArray = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
+
+	        if (emailsArray) {
+	            email = "";
+	            for (var i = 0; i < emailsArray.length; i++) {
+	                if (i != 0) {
+	                    email += separateEmailsBy;  //doesn't put ',' in the beginning
+	                } 
+	                email += emailsArray[i];
+	            }
+	        }
+	        return email;
+	    }
+   
+	    var text = 'The first email is test1@mails1.com. The second email: test2@mail-new2.bg. Third and forth emails are check3@telerik.com and try4@bgmails.it.';
+
+	    jsConsole.writeLine(findEmailAddresses(text));
+	    console.log(findEmailAddresses(text));
+	</script>
+</body>
+</html>

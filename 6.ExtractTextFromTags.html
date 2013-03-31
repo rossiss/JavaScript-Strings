@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>6.ExtractTextFromTags</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Extract all the text in the tags</h1>
+    <h2>Function that extracts the content of a html </h2>
+    <p>The function should return anything that is in a tag</p>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a function that extracts the content of a html page given as text. 
+	    //The function should return anything that is in a tag, without the tags.
+
+
+        //using regular expression - regex
+	    function extract(text) {
+	        var regex = /(<([^>]+)>)/ig;
+	        var result = text.replace(regex, "");
+	        return result;
+	    }
+
+	    var text = "<html><head><title>6.ExtractTextFromTags</title></head><body><h1>Extract all the text in the tags</h1><h2>Function that extracts the content of a html </h2><p>The function should return anything that is in a tag</p></body></html>";
+
+	    jsConsole.writeLine(extract(text));
+	</script>
+</body>
+</html>

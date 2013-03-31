@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>3.CountSubstrings</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>How many times a substring is contained?</h1>
+    <p>We are living in an yellow submarine. We don't have anything else. Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.</p>
+    <p>Search case-insensitive: "in"</p>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a JavaScript function that finds how many times a substring is contained in a given text 
+	    //(perform case insensitive search).
+
+        //splits the text and creates new array, then counts its elements - case-insensitive
+	    function count(string, subString) {
+	        var count = 0;
+	        var splitedString = string.split(subString); 
+
+	        for (var splited in splitedString) {
+	            count++;
+	        }
+	        return count;
+	    }
+
+	    var subString = "in";
+	    var text = "We are living in an yellow submarine. We don't have anything else. Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.";
+
+	    jsConsole.writeLine("Occurances: " + count(text, subString));
+	</script>
+</body>
+</html>
